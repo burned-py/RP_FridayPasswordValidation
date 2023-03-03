@@ -1,14 +1,14 @@
 public class PasswordValidation {
 
     public static void main(String[] args) {
-        String pw = "ABG3DF";
+        String pw = "ABG3fdghDF";
 /*        System.out.println(checkLength("test1234"));
         String pw = "ab3deFgh";
         String testKlein = "te3st";
         String upperTest = testKlein.toUpperCase();
         System.out.println(upperTest);
         System.out.println(Character.isLowerCase(pw.charAt(2)));*/
-        System.out.println(containsLower(pw));
+        System.out.println(passwordValidation(pw));
     }
 
     public static boolean checkLength(String pw) {
@@ -41,18 +41,32 @@ public class PasswordValidation {
         }
         return false;
     }
-}
-/*
-    public static String passwordValidation (String password) {
-        if (!passwordLength(password)){
+
+    public static String passwordValidation(String pw) {
+/*        String fail1 = "contain at least 8 characters";
+        String fail2 = "contain at least 8 characters";
+        String fail3 = "contain at least 8 characters";
+        String fail4 = "contain at least 8 characters";*/
+
+
+        if (!checkLength(pw)) {
             return "your password must contain at least 8 characters";
         }
-        if (!containsDigit(password))
-        {
+        if (!containsNumbers(pw)) {
             return "your password must contain a digit";
         }
-        if (passwordLength(password) && containsDigit(password)){
+        if (!containsLower(pw)) {
+            return "your password must contain a lower case character";
+        }
+        if (!containsUpper(pw)) {
+            return "your password must contain an upper case character";
+        }
+        if (checkLength(pw) && containsNumbers(pw) && containsLower(pw) && containsUpper(pw)) {
             return "your password is valid";
-        }else {
+        } else {
             return "your password needs at least 8 characters and one digit";
-        }*/
+        }
+    }
+}
+
+
